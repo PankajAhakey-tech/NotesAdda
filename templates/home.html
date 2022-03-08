@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block title %}Home | Notes Adda{% endblock title %} 
+{% block content %}
+<br>
+<br>
+<h1>Notes</h1>
+
+{% for i in object_list %}
+<div class="card justify-content-center" >
+  <div class="card-header"><strong>{{i.subject}} </strong> <a class="text-decoration-none" href="{% url 'branch' i.branch|slugify %}">{{i.branch}}</a></div>
+  <div class="card-body">
+    <p class="card-title"> 
+      {% if user.is_authenticated and user.id == post.author.id %} -
+      <a href="{% url 'delete_post' post.pk%}">(Delete)</a>
+      
+      {% endif %}
+    </p>
+    <p class="card-text">{{i.description|slice:":100" |safe}}</p>
+    <a href="{{i.notes.url}}"class="btn btn-secondary" >Click to view</a>
+    <a href="{{i.notes.url}}" class="btn btn-secondary" download>Download</a>
+  </div>
+</div>
+<br>
+
+{% endfor %} 
+
+
+{% endblock %}

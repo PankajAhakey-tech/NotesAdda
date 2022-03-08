@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Add New Notes{% endblock title %}
+{% block content %} 
+<br>
+      <br>
+{% if user.is_authenticated  %}
+<h1>Add Your Notes..</h1>
+<br/>
+<br/>
+<div class = 'container'>
+<div class = 'form-control'>
+    
+    <form  method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% comment %} {{form.media}} {% endcomment %}
+        {{form.as_p}}
+        <button class="btn btn-secondary">Add</button>
+
+    </div>
+    <script>
+        var name = "{{user.id}}"
+        document.getElementById("author_name").value= name;
+    </script>
+     {% else %}
+    <h1>You're  not allowed here !!</h1> 
+    </div>
+    {% endif %}
+
+
+ {% endblock %}

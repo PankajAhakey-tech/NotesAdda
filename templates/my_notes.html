@@ -1,0 +1,35 @@
+{% extends 'base.html' %} {% block title %}My Notes{% endblock title %} 
+{% block content %}
+<br>
+<br>
+{% if user.is_authenticated%}
+{% for i in object_list %}
+
+{% if  user.id == i.user.id %} 
+<h1>My Notes</h1>
+<div class="card justify-content-center" >
+  <div class="card-header"><strong>{{i.subject}} </strong> <a class="text-decoration-none" href="{% url 'branch' i.branch|slugify %}">{{i.branch}}</a>
+    
+</div>
+  <div class="card-body">
+    <div class="card-body">
+        
+    
+    <p class="card-text">{{i.description|slice:":100" |safe}}</p>
+    
+    <a href="{{i.notes.url}}"class="btn btn-secondary" >Click to view</a>
+    <a href="{{i.notes.url}}" class="btn btn-secondary" download>Download</a>
+    <a href="{% url 'delete_post' i.pk%}" class="btn btn-secondary">Delete</a>
+  </div>
+</div>
+<br>
+{% else %}
+<h1>Add your notes..</h1>
+{% endif %}
+{% endfor %} 
+{% else %}
+<h1>Please login first..</h1>
+{% endif %}
+
+
+{% endblock %}
