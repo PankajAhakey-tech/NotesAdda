@@ -1,8 +1,8 @@
 import os
 
 import django_heroku
-# import  dj_database_url
-# from decouple import config
+import  dj_database_url
+from decouple import config
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -18,8 +18,8 @@ SECRET_KEY = 'django-insecure-j5^0xa71$tt4q1-nx%o6!nu$f62--d&*8%(_w=+3zzl#_)&m-#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['https://notesaddanotes.herokuapp.com',"localhost"]
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://notesaddanotes.herokuapp.com',"localhost"]
+# ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -101,7 +101,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -111,15 +111,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 # 1
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_URL = 'static/'
 STATICFILES_DIRS = [
    os.path.join(BASE_DIR, 'Notesshare/static/')
 ]
 
-STATIC_URL = 'static/'
 # 2
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
