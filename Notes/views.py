@@ -1,9 +1,5 @@
-from dataclasses import field
-from pyexpat import model
-from unicodedata import category
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.http import HttpResponseRedirect
 from django.views.generic import ListView  , CreateView ,DeleteView
 
 from Notes.models import Branch , Notes
