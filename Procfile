@@ -1,1 +1,1 @@
-web: python3 manage.py collectstatic --no-input; gunicorn Notesshare.wsgi --log-file -
+web: gunicorn Notesshare.wsgi --log-file -

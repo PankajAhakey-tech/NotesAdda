@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-j5^0xa71$tt4q1-nx%o6!nu$f62--d&*8%(_w=+3zzl#_)&m-#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://notesaddanotes.herokuapp.com',"localhost"]
+ALLOWED_HOSTS = ["*"]
 
 
 INSTALLED_APPS = [
@@ -68,9 +68,8 @@ DATABASES = {
     }
 }
 
-# DATABASES['default'] = dj_database_url.config(env="HEROKU_POSTGRESQL_AQUA_URL", conn_max_age=600, ssl_require=True)
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -91,8 +90,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/4.0/topics/i18n/
+
 
 LANGUAGE_CODE = 'en-us'
 
@@ -107,9 +105,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 # 1
 
+STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATIC_URL = 'static/'
 STATICFILES_DIRS = [
    os.path.join(BASE_DIR, 'Notesshare/static/')
 ]
