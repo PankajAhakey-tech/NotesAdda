@@ -22,9 +22,9 @@ class Branch(models.Model):
 
 class Notes(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
-    subject = models.CharField(max_length=255)
+    subject = models.CharField(max_length=256)
     # branch = models.CharField(max_length=255)
-    branch = models.CharField(max_length=255,default="general")
+    branch = models.CharField(max_length=256,default="general")
 
     # category = models.ForeignKey(Category,on_delete=models.CASCADE,default="general")
     notes=models.FileField(upload_to="media",validators=[FileExtensionValidator(allowed_extensions=['pdf', 'png', 'jpg'])])
